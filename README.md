@@ -8,7 +8,7 @@ An intelligent Streamlit application that helps you analyze research papers usin
 
 ## 🌐 Live Demo
 
-[**Try it here →**](https://ai-research-paper-assistant.streamlit.app)
+[**Try it here →**](https://ai-research-paper-assistant-22cbttkk4q6ctgsbavx4o7.streamlit.app/)
 
 ## ✨ Features
 
