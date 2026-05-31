@@ -1,11 +1,11 @@
-"""LLM chain utilities using OpenRouter for summaries, notes, MCQs, and Q&A."""
+"""LLM chain utilities using OrcaRouter for summaries, notes, MCQs, and Q&A."""
 
 from openai import OpenAI
 from config import OPENROUTER_API_KEY, OPENROUTER_BASE_URL, LLM_MODEL, LLM_TEMPERATURE, MAX_TOKENS
 
 
 def get_client():
-    """Return an OpenAI client configured for OpenRouter."""
+    """Return an OpenAI client configured for OrcaRouter."""
     return OpenAI(
         base_url=OPENROUTER_BASE_URL,
         api_key=OPENROUTER_API_KEY,
@@ -13,7 +13,7 @@ def get_client():
 
 
 def _call_llm(prompt: str) -> str:
-    """Make a call to the LLM via OpenRouter."""
+    """Make a call to the LLM via OrcaRouter."""
     client = get_client()
     response = client.chat.completions.create(
         model=LLM_MODEL,

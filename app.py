@@ -1,4 +1,4 @@
-"""AI Research Paper Assistant — Streamlit Application (Powered by OpenRouter)."""
+"""AI Research Paper Assistant — Streamlit Application (Powered by OrcaRouter)."""
 
 import streamlit as st
 from utils.pdf_processor import extract_text_from_pdf, get_text_chunks
@@ -57,9 +57,8 @@ st.markdown(
 
 # ─── API Key Check ──────────────────────────────────────────────────────────────
 if not OPENROUTER_API_KEY:
-    st.warning("⚠️ OpenRouter API key not found. Please set `OPENROUTER_API_KEY` in your `.env` file.")
-    st.info("🔑 Get your free API key from [OpenRouter](https://openrouter.ai/keys)")
-    api_key_input = st.text_input("Or enter your OpenRouter API key here:", type="password")
+    st.warning("⚠️ API key not found. Please set `OPENROUTER_API_KEY` in your `.env` file or Streamlit secrets.")
+    api_key_input = st.text_input("Or enter your OrcaRouter API key here:", type="password")
     if api_key_input:
         import os
         os.environ["OPENROUTER_API_KEY"] = api_key_input
@@ -99,7 +98,7 @@ with st.sidebar:
         """
     )
     st.divider()
-    st.caption("Powered by OpenRouter + Gemini 2.0 Flash ⚡")
+    st.caption("Powered by OrcaRouter AI ⚡")
 
 # ─── Process PDF ────────────────────────────────────────────────────────────────
 if uploaded_file:

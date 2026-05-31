@@ -1,8 +1,10 @@
 """PDF processing utilities."""
 
 from PyPDF2 import PdfReader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from config import CHUNK_SIZE, CHUNK_OVERLAP
+
+
+CHUNK_SIZE = 1000
+CHUNK_OVERLAP = 200
 
 
 def extract_text_from_pdf(pdf_file) -> str:
@@ -17,11 +19,13 @@ def extract_text_from_pdf(pdf_file) -> str:
 
 
 def get_text_chunks(text: str) -> list[str]:
-    """Split text into overlapping chunks for embedding."""
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=CHUNK_SIZE,
-        chunk_overlap=CHUNK_OVERLAP,
-        length_function=len,
-        separators=["\n\n", "\n", ". ", " ", ""],
-    )
-    return splitter.split_text(text)
+    """Split text into overlapping chunks."""
+    chunks = []
+    start = 0
+    while start < len(text):
+        end = start + CHUNK_SIZE
+        chunk = text[start:end]
+        if chunk.strip():
+            chunks.append(chunk)
+        start += CHUNK_SIZE - CHUNK_OVERLAP
+    return chunks
